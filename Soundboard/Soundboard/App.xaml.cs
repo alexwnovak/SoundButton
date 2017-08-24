@@ -7,7 +7,12 @@ namespace Soundboard
    {
       protected override void OnStartup( StartupEventArgs e )
       {
-         SimpleIoc.Default.Register<IAudioPlayer>( () => new AudioPlayer() );
+         SimpleIoc.Default.Register<IAudioPlayer>( () =>
+         {
+            var audioPlayer = new AudioPlayer();
+            audioPlayer.Initialize();
+            return audioPlayer;
+         } );
       }
    }
 }
