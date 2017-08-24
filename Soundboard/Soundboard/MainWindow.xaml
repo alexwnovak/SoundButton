@@ -10,6 +10,8 @@
         Width="525"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
    <Grid>
-
+      <Button Width="50"
+              Height="50"
+              Command="{Binding PlayCommand, Mode=OneTime}" />
    </Grid>
 </Window>
