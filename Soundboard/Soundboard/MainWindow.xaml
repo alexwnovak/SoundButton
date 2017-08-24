@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="350"
-        Width="525">
+        Width="525"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
    <Grid>
 
    </Grid>
