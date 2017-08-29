@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Windows.Input;
 
 namespace Soundboard.Behaviors
 {
    public class InteractionInterpreter
    {
       private bool _leftMouseDown;
+      private bool _hasLeftDragged;
 
       public event EventHandler LeftClick;
       protected virtual void OnLeftClick( object sender, EventArgs e ) => LeftClick?.Invoke( sender, e );
@@ -22,8 +22,13 @@ namespace Soundboard.Behaviors
       {
          if ( _leftMouseDown )
          {
+            if ( !_hasLeftDragged )
+            {
+               OnLeftClick( this, EventArgs.Empty );
+            }
+
             _leftMouseDown = false;
-            OnLeftClick( this, EventArgs.Empty );
+            _hasLeftDragged = false;
          }
       }
 
@@ -31,6 +36,7 @@ namespace Soundboard.Behaviors
       {
          if ( leftButtonDown )
          {
+            _hasLeftDragged = true;
             OnLeftDrag( this, EventArgs.Empty );
          }
       }

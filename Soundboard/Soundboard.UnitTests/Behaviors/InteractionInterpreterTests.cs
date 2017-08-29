@@ -54,5 +54,19 @@ namespace Soundboard.UnitTests.Behaviors
 
          interactionInterpreter.ShouldRaise( nameof( interactionInterpreter.LeftDrag ) );
       }
+
+      [Fact]
+      public void MouseMove_LeftDraggingThenReleasing_DoesNotRaiseClickEvent()
+      {
+         var interactionInterpreter = new InteractionInterpreter();
+
+         interactionInterpreter.MonitorEvents();
+
+         interactionInterpreter.LeftMouseDown();
+         interactionInterpreter.MouseMove( 1, 0, true );
+         interactionInterpreter.LeftMouseUp();
+
+         interactionInterpreter.ShouldNotRaise( nameof( interactionInterpreter.LeftClick ) );
+      }
    }
 }
