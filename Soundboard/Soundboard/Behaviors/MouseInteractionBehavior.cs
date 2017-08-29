@@ -13,6 +13,7 @@ namespace Soundboard.Behaviors
       public MouseInteractionBehavior()
       {
          _interactionInterpreter.LeftClick += ( _, __ ) => _mainViewModel.PlayCommand.Execute( null );
+         _interactionInterpreter.LeftDrag += ( _, __ ) => AssociatedObject.DragMove();
       }
 
       protected override void OnAttached()
@@ -20,21 +21,34 @@ namespace Soundboard.Behaviors
          AssociatedObject.Loaded += ( _, __ ) =>
          {
             _mainViewModel = (MainViewModel) AssociatedObject.DataContext;
-            AssociatedObject.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
-            AssociatedObject.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
+            AssociatedObject.MouseLeftButtonDown += OnMouseLeftButtonDown;
+            AssociatedObject.MouseLeftButtonUp += OnMouseLeftButtonUp;
+            AssociatedObject.MouseMove += OnMouseMove;
          };
 
          AssociatedObject.Unloaded += ( _, __ ) =>
          {
-            AssociatedObject.PreviewMouseLeftButtonDown -= OnMouseLeftButtonDown;
-            AssociatedObject.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
+            AssociatedObject.MouseLeftButtonDown -= OnMouseLeftButtonDown;
+            AssociatedObject.MouseLeftButtonUp += OnMouseLeftButtonUp;
+            AssociatedObject.MouseMove -= OnMouseMove;
          };
       }
 
       private void OnMouseLeftButtonDown( object sender, MouseEventArgs e )
-         => _interactionInterpreter.LeftMouseDown();
+      {
+         _interactionInterpreter.LeftMouseDown();
+      }
 
       private void OnMouseLeftButtonUp( object sender, MouseEventArgs e )
-         => _interactionInterpreter.LeftMouseUp();
+      {
+         _interactionInterpreter.LeftMouseUp();
+      }
+
+      private void OnMouseMove( object sender, MouseEventArgs e )
+      {
+         var position = e.GetPosition( AssociatedObject );
+
+         _interactionInterpreter.MouseMove( position.X, position.Y, e.LeftButton == MouseButtonState.Pressed );
+      }
    }
 }
