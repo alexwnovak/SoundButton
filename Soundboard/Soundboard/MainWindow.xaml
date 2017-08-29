@@ -4,6 +4,8 @@
    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
    xmlns:local="clr-namespace:Soundboard"
+   xmlns:behaviors="clr-namespace:Soundboard.Behaviors"
+   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
    mc:Ignorable="d"
    Title="Airhorn"
    Height="160"
@@ -13,6 +15,11 @@
    WindowStyle="None"
    ResizeMode="NoResize"
    DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+
+   <i:Interaction.Behaviors>
+      <behaviors:MouseInteractionBehavior />
+   </i:Interaction.Behaviors>
+
    <Grid>
       <Grid.Effect>
          <DropShadowEffect BlurRadius="10"
