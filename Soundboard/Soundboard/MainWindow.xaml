@@ -30,8 +30,7 @@
          Height="128"
          HorizontalAlignment="Center"
          VerticalAlignment="Center"
-         Background="#01000000"
-         Command="{Binding PlayCommand, Mode=OneTime}">
+         Background="#01000000">
          <Button.Template>
             <ControlTemplate TargetType="Button">
                <Grid>
