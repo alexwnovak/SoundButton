@@ -6,12 +6,41 @@
         xmlns:local="clr-namespace:Soundboard"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="350"
-        Width="525"
+        Height="160"
+        Width="160"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
    <Grid>
-      <Button Width="50"
-              Height="50"
-              Command="{Binding PlayCommand, Mode=OneTime}" />
+      <Grid.Effect>
+         <DropShadowEffect BlurRadius="10"
+            ShadowDepth="2" />
+      </Grid.Effect>
+
+      <Button Width="128"
+         Height="128"
+         HorizontalAlignment="Center"
+         VerticalAlignment="Center"
+         Background="#01000000"
+         Command="{Binding PlayCommand, Mode=OneTime}">
+         <Button.Template>
+            <ControlTemplate TargetType="Button">
+               <Grid>
+                  <Ellipse Fill="Transparent"
+                     Stroke="White"
+                     StrokeThickness="5" />
+                  <ContentPresenter Content="{TemplateBinding Content}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center" />
+               </Grid>
+            </ControlTemplate>
+         </Button.Template>
+         <Button.Content>
+            <Image Source="Resources/Airhorn.png"
+               Width="64"
+               Height="64" />
+         </Button.Content>
+      </Button>
    </Grid>
 </Window>
