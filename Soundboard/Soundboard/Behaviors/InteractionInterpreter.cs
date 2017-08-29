@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Soundboard.Behaviors
 {
@@ -6,6 +7,13 @@ namespace Soundboard.Behaviors
    {
       private bool _leftMouseDown;
       private bool _hasLeftDragged;
+      private bool _hasLongPressed;
+
+      public TimeSpan LongPressDuration
+      {
+         get;
+         set;
+      } = TimeSpan.FromMilliseconds( 500 );
 
       public event EventHandler LeftClick;
       protected virtual void OnLeftClick( object sender, EventArgs e ) => LeftClick?.Invoke( sender, e );
@@ -13,9 +21,19 @@ namespace Soundboard.Behaviors
       public event EventHandler LeftDrag;
       protected virtual void OnLeftDrag( object sender, EventArgs e ) => LeftDrag?.Invoke( sender, e );
 
+      public event EventHandler LeftLongPress;
+      protected virtual void OnLeftLongPress( object sender, EventArgs e ) => LeftLongPress?.Invoke( sender, e );
+
       public void LeftMouseDown()
       {
          _leftMouseDown = true;
+
+         Task.Factory.StartNew( async () =>
+         {
+            await Task.Delay( LongPressDuration );
+            _hasLongPressed = true;
+            OnLeftLongPress( this, EventArgs.Empty );
+         } );
       }
 
       public void LeftMouseUp()

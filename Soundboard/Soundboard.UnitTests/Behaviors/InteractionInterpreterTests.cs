@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System;
+using System.Threading;
+using FluentAssertions;
 using Soundboard.Behaviors;
 using Xunit;
 
@@ -68,5 +70,22 @@ namespace Soundboard.UnitTests.Behaviors
 
          interactionInterpreter.ShouldNotRaise( nameof( interactionInterpreter.LeftClick ) );
       }
+
+      [Fact]
+      public void LeftMouseDown_ButtonIsHeldLongerThanTheLongPressDuration_RaisesLongPressEvent()
+      {
+         var interactionInterpreter = new InteractionInterpreter
+         {
+            LongPressDuration = TimeSpan.FromSeconds( 0 )
+         };
+
+         interactionInterpreter.MonitorEvents();
+
+         interactionInterpreter.LeftMouseDown();
+         Thread.Sleep( 20 );
+   
+         interactionInterpreter.ShouldRaise( nameof( interactionInterpreter.LeftLongPress ) );
+      }
+
    }
 }
