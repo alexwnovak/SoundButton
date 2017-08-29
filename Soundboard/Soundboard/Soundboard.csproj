@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AudioPlayer.cs" />
+    <Compile Include="Behaviors\InteractionInterpreter.cs" />
     <Compile Include="Behaviors\MouseInteractionBehavior.cs" />
     <Compile Include="IAudioPlayer.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
