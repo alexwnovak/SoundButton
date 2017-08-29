@@ -103,5 +103,23 @@ namespace Soundboard.UnitTests.Behaviors
 
          interactionInterpreter.ShouldNotRaise( nameof( interactionInterpreter.LeftClick ) );
       }
+
+      //[Fact]
+      //public void LeftMouseDown_ButtonIsPressedThenReleasedBeforeLongPressDuration_DoesNotRaiseLongPressEvent()
+      //{
+      //   var interactionInterpreter = new InteractionInterpreter
+      //   {
+      //      LongPressDuration = TimeSpan.FromSeconds( 10 )
+      //   };
+
+      //   interactionInterpreter.MonitorEvents();
+
+      //   interactionInterpreter.LeftMouseDown();
+      //   interactionInterpreter.LeftMouseUp();
+
+      //   Thread.Sleep( 100 );
+
+      //   interactionInterpreter.ShouldNotRaise( nameof( interactionInterpreter.LeftLongPress ) );
+      //}
    }
 }
