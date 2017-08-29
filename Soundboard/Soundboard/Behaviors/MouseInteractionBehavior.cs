@@ -14,6 +14,7 @@ namespace Soundboard.Behaviors
       {
          _interactionInterpreter.LeftClick += ( _, __ ) => _mainViewModel.PlayCommand.Execute( null );
          _interactionInterpreter.LeftDrag += ( _, __ ) => AssociatedObject.DragMove();
+         _interactionInterpreter.LeftLongPress += ( _, __ ) => System.Diagnostics.Debug.WriteLine( "LONG PRESS" );
       }
 
       protected override void OnAttached()

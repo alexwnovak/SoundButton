@@ -40,13 +40,14 @@ namespace Soundboard.Behaviors
       {
          if ( _leftMouseDown )
          {
-            if ( !_hasLeftDragged )
+            if ( !_hasLeftDragged && !_hasLongPressed )
             {
                OnLeftClick( this, EventArgs.Empty );
             }
 
             _leftMouseDown = false;
             _hasLeftDragged = false;
+            _hasLongPressed = false;
          }
       }
 
