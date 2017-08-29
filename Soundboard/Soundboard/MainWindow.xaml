@@ -11,6 +11,7 @@
    AllowsTransparency="True"
    Background="Transparent"
    WindowStyle="None"
+   ResizeMode="NoResize"
    DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
    <Grid>
       <Grid.Effect>
