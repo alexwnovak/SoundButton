@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 using Soundboard.ViewModels;
@@ -14,7 +15,7 @@ namespace Soundboard.Behaviors
       {
          _interactionInterpreter.LeftClick += ( _, __ ) => _mainViewModel.PlayCommand.Execute( null );
          _interactionInterpreter.LeftDrag += ( _, __ ) => AssociatedObject.DragMove();
-         _interactionInterpreter.LeftLongPress += ( _, __ ) => System.Diagnostics.Debug.WriteLine( "LONG PRESS" );
+         _interactionInterpreter.LeftLongPress += ( _, __ ) => Dispatcher.BeginInvoke( new Action( OnLongPress ) );
       }
 
       protected override void OnAttached()
@@ -50,6 +51,10 @@ namespace Soundboard.Behaviors
          var position = e.GetPosition( AssociatedObject );
 
          _interactionInterpreter.MouseMove( position.X, position.Y, e.LeftButton == MouseButtonState.Pressed );
+      }
+
+      private void OnLongPress()
+      {
       }
    }
 }
