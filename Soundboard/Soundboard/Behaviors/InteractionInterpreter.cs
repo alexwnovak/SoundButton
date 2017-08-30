@@ -41,7 +41,11 @@ namespace Soundboard.Behaviors
             if ( !_cancellationTokenSource.Token.IsCancellationRequested )
             {
                _hasLongPressed = true;
-               OnLeftLongPress( this, EventArgs.Empty );
+
+               if ( !_hasLeftDragged )
+               {
+                  OnLeftLongPress( this, EventArgs.Empty );
+               }
             }
          }, _cancellationTokenSource.Token );
       }
