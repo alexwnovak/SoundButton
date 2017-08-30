@@ -30,13 +30,15 @@ namespace Soundboard.Behaviors
             _mainViewModel = (MainViewModel) AssociatedObject.DataContext;
             AssociatedObject.MouseLeftButtonDown += OnMouseLeftButtonDown;
             AssociatedObject.MouseLeftButtonUp += OnMouseLeftButtonUp;
+            AssociatedObject.MouseRightButtonUp += OnMouseRightButtonUp;
             AssociatedObject.MouseMove += OnMouseMove;
          };
 
          AssociatedObject.Unloaded += ( _, __ ) =>
          {
             AssociatedObject.MouseLeftButtonDown -= OnMouseLeftButtonDown;
-            AssociatedObject.MouseLeftButtonUp += OnMouseLeftButtonUp;
+            AssociatedObject.MouseLeftButtonUp -= OnMouseLeftButtonUp;
+            AssociatedObject.MouseRightButtonUp -= OnMouseRightButtonUp;
             AssociatedObject.MouseMove -= OnMouseMove;
          };
       }
@@ -51,6 +53,8 @@ namespace Soundboard.Behaviors
          _interactionInterpreter.LeftMouseUp();
       }
 
+      private void OnMouseRightButtonUp( object sender, MouseEventArgs e ) => FadeInMenu();
+
       private void OnMouseMove( object sender, MouseEventArgs e )
       {
          var position = e.GetPosition( AssociatedObject );
@@ -58,7 +62,9 @@ namespace Soundboard.Behaviors
          _interactionInterpreter.MouseMove( position.X, position.Y, e.LeftButton == MouseButtonState.Pressed );
       }
 
-      private void OnLongPress()
+      private void OnLongPress() => FadeInMenu();
+
+      private void FadeInMenu()
       {
          var storyboard = new Storyboard();
          int beginTime = 0;
