@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Soundboard
+namespace Soundboard.Views
 {
    public partial class MainWindow : Window
    {
