@@ -15,6 +15,7 @@
    Background="Transparent"
    WindowStyle="None"
    ResizeMode="NoResize"
+   Deactivated="MainWindow_OnDeactivated"
    DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
 
    <i:Interaction.Behaviors>
