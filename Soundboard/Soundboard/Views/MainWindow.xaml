@@ -24,7 +24,7 @@
    <Grid>
       <Grid.ColumnDefinitions>
          <ColumnDefinition Width="160" />
-         <ColumnDefinition Width="140" />
+         <ColumnDefinition Width="160" />
       </Grid.ColumnDefinitions>
 
       <Border Width="128"
@@ -51,10 +51,37 @@
          VerticalAlignment="Center">
 
          <StackPanel.Resources>
-            <Style TargetType="{x:Type Border}">
+            <Style TargetType="{x:Type Button}">
                <Setter Property="Margin" Value="0,6"/>
+               <Setter Property="Template">
+                  <Setter.Value>
+                     <ControlTemplate TargetType="Button">
+                        <Border HorizontalAlignment="Stretch"
+                           Height="40"
+                           Width="160"
+                           BorderThickness="3"
+                           BorderBrush="White"
+                           Background="#4000">
+
+                           <Border.Effect>
+                              <DropShadowEffect BlurRadius="10"
+                                 ShadowDepth="2" />
+                           </Border.Effect>
+
+                           <TextBlock HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              Margin="10,0,0,0"
+                              Foreground="White"
+                              Text="{TemplateBinding Content}" />
+                        </Border>
+                     </ControlTemplate>
+                  </Setter.Value>
+               </Setter>
             </Style>
-         </StackPanel.Resources> 
+         </StackPanel.Resources>
+
+         <Button Content="Minimize" />
+         <Button Content="Exit" />
       </StackPanel>
    </Grid>
 </Window>
