@@ -8,6 +8,7 @@
    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
    mc:Ignorable="d"
    Title="Airhorn"
+   FontSize="16"
    Height="160"
    Width="160"
    AllowsTransparency="True"
@@ -21,6 +22,11 @@
    </i:Interaction.Behaviors>
 
    <Grid>
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="160" />
+         <ColumnDefinition Width="140" />
+      </Grid.ColumnDefinitions>
+
       <Border Width="128"
          Height="128"
          HorizontalAlignment="Left"
@@ -40,5 +46,15 @@
             Width="64"
             Height="64" />
       </Border>
+
+      <StackPanel Grid.Column="1"
+         VerticalAlignment="Center">
+
+         <StackPanel.Resources>
+            <Style TargetType="{x:Type Border}">
+               <Setter Property="Margin" Value="0,6"/>
+            </Style>
+         </StackPanel.Resources> 
+      </StackPanel>
    </Grid>
 </Window>
