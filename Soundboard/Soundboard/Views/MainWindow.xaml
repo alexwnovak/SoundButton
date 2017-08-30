@@ -21,11 +21,6 @@
    </i:Interaction.Behaviors>
 
    <Grid>
-      <Grid.Effect>
-         <DropShadowEffect BlurRadius="10"
-            ShadowDepth="2" />
-      </Grid.Effect>
-
       <Border Width="128"
          Height="128"
          HorizontalAlignment="Left"
@@ -34,7 +29,12 @@
          BorderThickness="5"
          CornerRadius="100"
          Margin="10,0,0,0"
-         Background="#4000"> 
+         Background="#4000">
+
+         <Border.Effect>
+            <DropShadowEffect BlurRadius="10"
+               ShadowDepth="2" />
+         </Border.Effect>
          
          <Image Source="/Resources/Airhorn.png"
             Width="64"
