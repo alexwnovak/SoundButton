@@ -32,7 +32,7 @@
          VerticalAlignment="Center"
          Stroke="White"
          StrokeThickness="5"
-         Fill="#01000000" />
+         Fill="#4000" />
 
       <Image Source="Resources/Airhorn.png"
          Width="64"
