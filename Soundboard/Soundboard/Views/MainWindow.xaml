@@ -48,7 +48,9 @@
             Height="64" />
       </Border>
 
-      <StackPanel Grid.Column="1"
+      <StackPanel x:Name="MenuStackPanel"
+         x:FieldModifier="public"
+         Grid.Column="1"
          VerticalAlignment="Center">
 
          <StackPanel.Resources>
