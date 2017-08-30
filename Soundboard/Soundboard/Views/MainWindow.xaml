@@ -80,8 +80,11 @@
             </Style>
          </StackPanel.Resources>
 
-         <Button Content="Minimize" />
-         <Button Content="Exit" />
+         <Button Content="Minimize"
+            Command="{Binding MinimizeCommand, Mode=OneTime}" />
+
+         <Button Content="Exit"
+            Command="{Binding ExitCommand, Mode=OneTime}" />
       </StackPanel>
    </Grid>
 </Window>
