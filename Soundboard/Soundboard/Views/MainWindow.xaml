@@ -66,6 +66,26 @@
                            BorderBrush="White"
                            Background="#4000">
 
+                           <VisualStateManager.VisualStateGroups>
+                              <VisualStateGroup x:Name="CommonStates">
+                                 <VisualState x:Name="Normal" />
+                                 <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                       <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          Duration="0"
+                                          To="#C47A" />
+                                    </Storyboard>
+                                 </VisualState>
+                                 <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                       <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                          Duration="0"
+                                          To="#C235" />
+                                    </Storyboard>
+                                 </VisualState>
+                              </VisualStateGroup>
+                           </VisualStateManager.VisualStateGroups>
+
                            <Border.Effect>
                               <DropShadowEffect BlurRadius="10"
                                  ShadowDepth="2" />
@@ -91,3 +111,4 @@
       </StackPanel>
    </Grid>
 </Window>
+ 
