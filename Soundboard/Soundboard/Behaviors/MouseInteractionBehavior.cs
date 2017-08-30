@@ -55,6 +55,7 @@ namespace Soundboard.Behaviors
 
       private void OnLongPress()
       {
+         AssociatedObject.Width = 500;
       }
    }
 }
