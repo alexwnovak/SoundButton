@@ -85,9 +85,9 @@
     <Compile Include="ViewModels\MainViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SoundButton\Soundboard.csproj">
+    <ProjectReference Include="..\SoundButton\SoundButton.csproj">
       <Project>{01e2939b-00ae-42d4-b404-817a947bb310}</Project>
-      <Name>Soundboard</Name>
+      <Name>SoundButton</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
