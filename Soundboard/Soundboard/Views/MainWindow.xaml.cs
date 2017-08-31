@@ -6,6 +6,8 @@ namespace Soundboard.Views
 {
    public partial class MainWindow : Window
    {
+      private double _originalWidth;
+
       public MainWindow()
       {
          InitializeComponent();
@@ -15,7 +17,7 @@ namespace Soundboard.Views
          viewModel.ExitRequested += ( _, __ ) => OnExitRequested();
       }
 
-      private void ResetWindowWidth() => Width = 148;
+      private void ResetWindowWidth() => Width = _originalWidth;
 
       private void OnMinimizeRequested()
       {
@@ -28,6 +30,7 @@ namespace Soundboard.Views
          Close();
       }
 
+      private void MainWindow_OnLoaded( object sender, RoutedEventArgs e ) => _originalWidth = Width;
       private void MainWindow_OnDeactivated( object sender, EventArgs e ) => ResetWindowWidth();
    }
 }
