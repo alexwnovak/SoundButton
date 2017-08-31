@@ -18,6 +18,10 @@
    Deactivated="MainWindow_OnDeactivated"
    DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
 
+   <Window.Resources>
+      <ResourceDictionary Source="/Styles/BorderButton.xaml" />
+   </Window.Resources>
+
    <i:Interaction.Behaviors>
       <behaviors:MouseInteractionBehavior />
    </i:Interaction.Behaviors>
@@ -53,60 +57,12 @@
          Grid.Column="1"
          VerticalAlignment="Center">
 
-         <StackPanel.Resources>
-            <Style TargetType="{x:Type Button}">
-               <Setter Property="Margin" Value="0,6"/>
-               <Setter Property="Template">
-                  <Setter.Value>
-                     <ControlTemplate TargetType="Button">
-                        <Border HorizontalAlignment="Stretch"
-                           Height="40"
-                           Width="160"
-                           BorderThickness="3"
-                           BorderBrush="White"
-                           Background="#4000">
-
-                           <VisualStateManager.VisualStateGroups>
-                              <VisualStateGroup x:Name="CommonStates">
-                                 <VisualState x:Name="Normal" />
-                                 <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                       <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                          Duration="0"
-                                          To="#C47A" />
-                                    </Storyboard>
-                                 </VisualState>
-                                 <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                       <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                          Duration="0"
-                                          To="#C235" />
-                                    </Storyboard>
-                                 </VisualState>
-                              </VisualStateGroup>
-                           </VisualStateManager.VisualStateGroups>
-
-                           <Border.Effect>
-                              <DropShadowEffect BlurRadius="10"
-                                 ShadowDepth="2" />
-                           </Border.Effect>
-
-                           <TextBlock HorizontalAlignment="Left"
-                              VerticalAlignment="Center"
-                              Margin="10,0,0,0"
-                              Foreground="White"
-                              Text="{TemplateBinding Content}" />
-                        </Border>
-                     </ControlTemplate>
-                  </Setter.Value>
-               </Setter>
-            </Style>
-         </StackPanel.Resources>
-
          <Button Content="Minimize"
+            Style="{StaticResource BorderButton}"
             Command="{Binding MinimizeCommand, Mode=OneTime}" />
 
          <Button Content="Exit"
+            Style="{StaticResource BorderButton}"
             Command="{Binding ExitCommand, Mode=OneTime}" />
       </StackPanel>
    </Grid>
