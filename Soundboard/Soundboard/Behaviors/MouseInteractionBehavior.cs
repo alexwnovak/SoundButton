@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 using System.Windows.Media;
@@ -10,16 +11,17 @@ using Soundboard.Views;
 
 namespace Soundboard.Behaviors
 {
-   public class MouseInteractionBehavior : Behavior<MainWindow>
+   public class MouseInteractionBehavior : Behavior<Button>
    {
       private readonly InteractionInterpreter _interactionInterpreter = new InteractionInterpreter();
       private readonly List<string> _nameList = new List<string>();
       private MainViewModel _mainViewModel;
+      private MainWindow _mainWindow;
 
       public MouseInteractionBehavior()
       {
          _interactionInterpreter.LeftClick += ( _, __ ) => _mainViewModel.PlayCommand.Execute( null );
-         _interactionInterpreter.LeftDrag += ( _, __ ) => AssociatedObject.DragMove();
+         _interactionInterpreter.LeftDrag += ( _, __ ) => _mainWindow.DragMove();
          _interactionInterpreter.LeftLongPress += ( _, __ ) => Dispatcher.BeginInvoke( new Action( OnLongPress ) );
       }
 
@@ -27,17 +29,18 @@ namespace Soundboard.Behaviors
       {
          AssociatedObject.Loaded += ( _, __ ) =>
          {
+            _mainWindow = (MainWindow) Application.Current.MainWindow;
             _mainViewModel = (MainViewModel) AssociatedObject.DataContext;
-            AssociatedObject.MouseLeftButtonDown += OnMouseLeftButtonDown;
-            AssociatedObject.MouseLeftButtonUp += OnMouseLeftButtonUp;
+            AssociatedObject.PreviewMouseLeftButtonDown += OnMouseLeftButtonDown;
+            AssociatedObject.PreviewMouseLeftButtonUp += OnMouseLeftButtonUp;
             AssociatedObject.MouseRightButtonUp += OnMouseRightButtonUp;
             AssociatedObject.MouseMove += OnMouseMove;
          };
 
          AssociatedObject.Unloaded += ( _, __ ) =>
          {
-            AssociatedObject.MouseLeftButtonDown -= OnMouseLeftButtonDown;
-            AssociatedObject.MouseLeftButtonUp -= OnMouseLeftButtonUp;
+            AssociatedObject.PreviewMouseLeftButtonDown -= OnMouseLeftButtonDown;
+            AssociatedObject.PreviewMouseLeftButtonUp -= OnMouseLeftButtonUp;
             AssociatedObject.MouseRightButtonUp -= OnMouseRightButtonUp;
             AssociatedObject.MouseMove -= OnMouseMove;
          };
@@ -71,7 +74,7 @@ namespace Soundboard.Behaviors
 
          NameScope.SetNameScope( this, new NameScope() );
 
-         foreach ( UIElement item in AssociatedObject.MenuStackPanel.Children )
+         foreach ( UIElement item in _mainWindow.MenuStackPanel.Children )
          {
             var fadeAnimation = new DoubleAnimation( 0, 1, new Duration( TimeSpan.FromSeconds( 0.4 ) ) );
             Storyboard.SetTarget( fadeAnimation, item );
@@ -103,7 +106,7 @@ namespace Soundboard.Behaviors
             beginTime += 120;
          }
 
-         AssociatedObject.Width = 500;
+         _mainWindow.Width = 500;
 
          storyboard.Begin( AssociatedObject );
       }
