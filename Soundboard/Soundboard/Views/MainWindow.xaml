@@ -19,7 +19,12 @@
    DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
 
    <Window.Resources>
-      <ResourceDictionary Source="/Styles/BorderButton.xaml" />
+      <ResourceDictionary>
+         <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="/Styles/BorderButton.xaml" />
+            <ResourceDictionary Source="/Styles/RoundedBorderButton.xaml" />
+         </ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary>
    </Window.Resources>
 
    <i:Interaction.Behaviors>
@@ -32,25 +37,12 @@
          <ColumnDefinition Width="160" />
       </Grid.ColumnDefinitions>
 
-      <Border Width="128"
-         Height="128"
-         HorizontalAlignment="Left"
-         VerticalAlignment="Center"
-         BorderBrush="White"
-         BorderThickness="5"
-         CornerRadius="100"
-         Margin="10,0,0,0"
-         Background="#4000">
+      <Button Style="{StaticResource RoundedBorderButton}">
 
-         <Border.Effect>
-            <DropShadowEffect BlurRadius="10"
-               ShadowDepth="2" />
-         </Border.Effect>
-         
          <Image Source="/Resources/Airhorn.png"
             Width="64"
             Height="64" />
-      </Border>
+      </Button>
 
       <StackPanel x:Name="MenuStackPanel"
          x:FieldModifier="public"
