@@ -15,7 +15,7 @@ namespace Soundboard.Views
          viewModel.ExitRequested += ( _, __ ) => OnExitRequested();
       }
 
-      private void ResetWindowWidth() => Width = 160;
+      private void ResetWindowWidth() => Width = 148;
 
       private void OnMinimizeRequested()
       {
