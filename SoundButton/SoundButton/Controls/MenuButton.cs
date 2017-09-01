@@ -13,6 +13,7 @@ namespace SoundButton.Controls
    public class MenuButton : ContentControl
    {
       private readonly DispatcherTimer _longPressDispatcherTimer = new DispatcherTimer( DispatcherPriority.Input );
+      private bool _hasLongPressed;
 
       private Border _outerBorder;
       public Border OuterBorder
@@ -98,6 +99,8 @@ namespace SoundButton.Controls
       private void LongPressDispatcherTimerTick()
       {
          _longPressDispatcherTimer.Stop();
+         _hasLongPressed = true;
+
          RaiseLongPressEvent();
       }
 
@@ -126,7 +129,13 @@ namespace SoundButton.Controls
       {
          _longPressDispatcherTimer.Stop();
          VisualStateManager.GoToState( this, "MouseOver", true );
-         RaiseClickEvent();
+
+         if ( !_hasLongPressed )
+         {
+            RaiseClickEvent();
+         }
+
+         _hasLongPressed = false;
       }
 
       protected void RaiseClickEvent() => RaiseEvent( new RoutedEventArgs( ClickEvent ) );
