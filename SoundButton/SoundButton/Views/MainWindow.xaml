@@ -5,6 +5,7 @@
    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:behaviors="clr-namespace:SoundButton.Behaviors"
+        xmlns:controls="clr-namespace:SoundButton.Controls"
         mc:Ignorable="d"
    Title="Airhorn"
    FontSize="16"
@@ -33,15 +34,20 @@
          <ColumnDefinition Width="160" />
       </Grid.ColumnDefinitions>
 
-      <Button Style="{StaticResource RoundedBorderButton}">
-         <i:Interaction.Behaviors>
-            <behaviors:MouseInteractionBehavior />
-         </i:Interaction.Behaviors>
+      <controls:MenuButton Width="128"
+                           Height="128"
+                           CornerRadius="100"
+                           Background="#4000">
+
+         <controls:MenuButton.Effect>
+            <DropShadowEffect BlurRadius="10"
+                              ShadowDepth="2" />
+         </controls:MenuButton.Effect>
 
          <Image Source="/Resources/Airhorn.png"
-            Width="64"
-            Height="64" />
-      </Button>
+                Width="64"
+                Height="64" />
+      </controls:MenuButton>
 
       <StackPanel x:Name="MenuStackPanel"
          x:FieldModifier="public"
