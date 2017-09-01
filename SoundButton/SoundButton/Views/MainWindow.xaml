@@ -3,10 +3,10 @@
    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:behaviors="clr-namespace:SoundButton.Behaviors"
-        xmlns:controls="clr-namespace:SoundButton.Controls"
-        mc:Ignorable="d"
+   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+   xmlns:behaviors="clr-namespace:SoundButton.Behaviors"
+   xmlns:controls="clr-namespace:SoundButton.Controls"
+   mc:Ignorable="d"
    Title="Airhorn"
    FontSize="16"
    Width="148"
@@ -35,18 +35,17 @@
       </Grid.ColumnDefinitions>
 
       <controls:MenuButton Width="128"
-                           Height="128"
-                           CornerRadius="100"
-                           Background="#4000">
+         Height="128"
+         CornerRadius="100"
+         Background="#4000">
 
          <controls:MenuButton.Effect>
-            <DropShadowEffect BlurRadius="10"
-                              ShadowDepth="2" />
+            <DropShadowEffect BlurRadius="10" ShadowDepth="2" />
          </controls:MenuButton.Effect>
 
          <Image Source="/Resources/Airhorn.png"
-                Width="64"
-                Height="64" />
+            Width="64"
+            Height="64" />
       </controls:MenuButton>
 
       <StackPanel x:Name="MenuStackPanel"
