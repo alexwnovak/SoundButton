@@ -47,6 +47,17 @@ namespace SoundButton.Controls
          set => SetValue( CornerRadiusProperty, value );
       }
 
+      public static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent( nameof( Click ),
+         RoutingStrategy.Bubble,
+         typeof( RoutedEventHandler ),
+         typeof( MenuButton ) );
+      
+      public event RoutedEventHandler Click
+      {
+         add => AddHandler( ClickEvent, value );
+         remove => RemoveHandler( ClickEvent, value );
+      }
+
       static MenuButton()
       {
          DefaultStyleKeyProperty.OverrideMetadata( typeof( MenuButton ), new FrameworkPropertyMetadata( typeof( MenuButton ) ) );
@@ -75,6 +86,9 @@ namespace SoundButton.Controls
       private void OuterBorderMouseLeftButtonUp( object sender, MouseButtonEventArgs e )
       {
          VisualStateManager.GoToState( this, "MouseOver", true );
+         RaiseClickEvent();
       }
+
+      protected void RaiseClickEvent() => RaiseEvent( new RoutedEventArgs( ClickEvent ) );
    }
 }
