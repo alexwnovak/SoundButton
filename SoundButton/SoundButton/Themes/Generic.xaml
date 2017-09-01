@@ -1,33 +1,31 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-   <Style x:Key="RoundedBorderButton" TargetType="Button">
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   xmlns:controls="clr-namespace:SoundButton.Controls">
+   <Style TargetType="controls:MenuButton">
       <Setter Property="Template">
          <Setter.Value>
-            <ControlTemplate TargetType="Button">
-               <Border x:Name="ButtonBorder"
-                  Width="128"
-                  Height="128"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Center"
+            <ControlTemplate TargetType="controls:MenuButton">
+               <Border x:Name="OuterBorder"
                   BorderBrush="White"
-                  BorderThickness="5"
-                  CornerRadius="100"
-                  Margin="10,0,0,0"
-                  Background="#4000">
-
+                  BorderThickness="3"
+                  CornerRadius="{TemplateBinding CornerRadius}"
+                  Background="{TemplateBinding Background}">
+                  
                   <VisualStateManager.VisualStateGroups>
                      <VisualStateGroup x:Name="CommonStates">
                         <VisualState x:Name="Normal" />
                         <VisualState x:Name="Pressed">
                            <Storyboard>
-                              <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                              <ColorAnimation Storyboard.TargetName="OuterBorder"
+                                 Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                  Duration="0"
                                  To="#C47A" />
                            </Storyboard>
                         </VisualState>
                         <VisualState x:Name="MouseOver">
                            <Storyboard>
-                              <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                              <ColorAnimation Storyboard.TargetName="OuterBorder"
+                                 Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                  Duration="0"
                                  To="#C235" />
                            </Storyboard>
@@ -35,15 +33,10 @@
                      </VisualStateGroup>
                   </VisualStateManager.VisualStateGroups>
 
-                  <Border.Effect>
-                     <DropShadowEffect BlurRadius="10"
-                        ShadowDepth="2" />
-                  </Border.Effect>
-         
                   <ContentPresenter Content="{TemplateBinding Content}" />
                </Border>
             </ControlTemplate>
          </Setter.Value>
       </Setter>
-   </Style>
+   </Style> 
 </ResourceDictionary>
