@@ -79,6 +79,17 @@ namespace SoundButton.Controls
          remove => RemoveHandler( LeftClickEvent, value );
       }
 
+      public static readonly RoutedEvent RightClickEvent = EventManager.RegisterRoutedEvent( nameof( RightClick ),
+         RoutingStrategy.Bubble,
+         typeof( RoutedEventHandler ),
+         typeof( MenuButton ) );
+
+      public event RoutedEventHandler RightClick
+      {
+         add => AddHandler( RightClickEvent, value );
+         remove => RemoveHandler( RightClickEvent, value );
+      }
+
       public static readonly RoutedEvent LongPressEvent = EventManager.RegisterRoutedEvent( nameof( LongPress ),
          RoutingStrategy.Bubble,
          typeof( RoutedEventHandler ),
@@ -150,10 +161,12 @@ namespace SoundButton.Controls
 
       private void OuterBorderMouseRightButtonUp( object sender, MouseEventArgs e )
       {
+         RaiseRightClickEvent();
          VisualStateManager.GoToState( this, "MouseOver", true );
       }
 
       protected void RaiseLeftClickEvent() => RaiseEvent( new RoutedEventArgs( LeftClickEvent ) );
+      protected void RaiseRightClickEvent() => RaiseEvent( new RoutedEventArgs( RightClickEvent ) );
       protected void RaiseLongPressEvent() => RaiseEvent( new RoutedEventArgs( LongPressEvent ) );
    }
 }
