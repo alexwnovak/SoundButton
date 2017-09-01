@@ -14,6 +14,14 @@
                   <VisualStateManager.VisualStateGroups>
                      <VisualStateGroup x:Name="CommonStates">
                         <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Pressed">
+                           <Storyboard>
+                              <ColorAnimation Storyboard.TargetName="OuterBorder"
+                                 Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                 Duration="0"
+                                 To="#C47A" />
+                           </Storyboard>
+                        </VisualState>
                         <VisualState x:Name="MouseOver">
                            <Storyboard>
                               <ColorAnimation Storyboard.TargetName="OuterBorder"
