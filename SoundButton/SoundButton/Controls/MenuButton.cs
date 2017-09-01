@@ -68,15 +68,15 @@ namespace SoundButton.Controls
          set => SetValue( LongPressIntervalProperty, value );
       }
 
-      public static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent( nameof( Click ),
+      public static readonly RoutedEvent LeftClickEvent = EventManager.RegisterRoutedEvent( nameof( LeftClick ),
          RoutingStrategy.Bubble,
          typeof( RoutedEventHandler ),
          typeof( MenuButton ) );
       
-      public event RoutedEventHandler Click
+      public event RoutedEventHandler LeftClick
       {
-         add => AddHandler( ClickEvent, value );
-         remove => RemoveHandler( ClickEvent, value );
+         add => AddHandler( LeftClickEvent, value );
+         remove => RemoveHandler( LeftClickEvent, value );
       }
 
       public static readonly RoutedEvent LongPressEvent = EventManager.RegisterRoutedEvent( nameof( LongPress ),
@@ -137,7 +137,7 @@ namespace SoundButton.Controls
 
          if ( !_hasLongPressed )
          {
-            RaiseClickEvent();
+            RaiseLeftClickEvent();
          }
 
          _hasLongPressed = false;
@@ -153,7 +153,7 @@ namespace SoundButton.Controls
          VisualStateManager.GoToState( this, "MouseOver", true );
       }
 
-      protected void RaiseClickEvent() => RaiseEvent( new RoutedEventArgs( ClickEvent ) );
+      protected void RaiseLeftClickEvent() => RaiseEvent( new RoutedEventArgs( LeftClickEvent ) );
       protected void RaiseLongPressEvent() => RaiseEvent( new RoutedEventArgs( LongPressEvent ) );
    }
 }
