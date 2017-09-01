@@ -15,5 +15,10 @@ namespace SoundButton.Controls
          get => (CornerRadius) GetValue( CornerRadiusProperty );
          set => SetValue( CornerRadiusProperty, value );
       }
+
+      static MenuButton()
+      {
+         DefaultStyleKeyProperty.OverrideMetadata( typeof( MenuButton ), new FrameworkPropertyMetadata( typeof( MenuButton ) ) );
+      }
    }
 }
