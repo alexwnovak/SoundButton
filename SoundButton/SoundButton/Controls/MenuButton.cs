@@ -55,7 +55,7 @@ namespace SoundButton.Controls
       public static DependencyProperty LongPressIntervalProperty = DependencyProperty.Register( nameof( LongPressInterval ),
          typeof( TimeSpan ),
          typeof( MenuButton ),
-         new PropertyMetadata( TimeSpan.FromMilliseconds( 1000 ) ) );
+         new PropertyMetadata( TimeSpan.FromMilliseconds( 500 ) ) );
 
       public TimeSpan LongPressInterval
       {
