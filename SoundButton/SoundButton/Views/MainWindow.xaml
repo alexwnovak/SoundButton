@@ -20,12 +20,7 @@
    DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
 
    <Window.Resources>
-      <ResourceDictionary>
-         <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="/Styles/BorderButton.xaml" />
-            <ResourceDictionary Source="/Styles/RoundedBorderButton.xaml" />
-         </ResourceDictionary.MergedDictionaries>
-      </ResourceDictionary>
+      <ResourceDictionary Source="/Styles/BorderButton.xaml" />
    </Window.Resources>
 
    <Grid>
