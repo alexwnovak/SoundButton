@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using FluentAssertions;
-using Soundboard.Behaviors;
+using SoundButton.Behaviors;
 using Xunit;
 
-namespace Soundboard.UnitTests.Behaviors
+namespace SoundButton.UnitTests.Behaviors
 {
    public class InteractionInterpreterTests
    {

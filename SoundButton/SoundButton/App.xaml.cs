@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using GalaSoft.MvvmLight.Ioc;
 
-namespace Soundboard
+namespace SoundButton
 {
    public partial class App : Application
    {

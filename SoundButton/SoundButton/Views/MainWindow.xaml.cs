@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
-using Soundboard.ViewModels;
+using SoundButton.ViewModels;
 
-namespace Soundboard.Views
+namespace SoundButton.Views
 {
    public partial class MainWindow : Window
    {

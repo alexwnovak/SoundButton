@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soundboard", "Soundboard\Soundboard.csproj", "{01E2939B-00AE-42D4-B404-817A947BB310}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundButton", "SoundButton\SoundButton.csproj", "{01E2939B-00AE-42D4-B404-817A947BB310}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soundboard.UnitTests", "Soundboard.UnitTests\Soundboard.UnitTests.csproj", "{B99DCE95-E39A-4FBB-B01D-8EFFADCB8835}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundButton.UnitTests", "SoundButton.UnitTests\SoundButton.UnitTests.csproj", "{B99DCE95-E39A-4FBB-B01D-8EFFADCB8835}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

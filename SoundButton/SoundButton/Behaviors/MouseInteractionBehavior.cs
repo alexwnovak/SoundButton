@@ -6,10 +6,10 @@ using System.Windows.Input;
 using System.Windows.Interactivity;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using Soundboard.ViewModels;
-using Soundboard.Views;
+using SoundButton.ViewModels;
+using SoundButton.Views;
 
-namespace Soundboard.Behaviors
+namespace SoundButton.Behaviors
 {
    public class MouseInteractionBehavior : Behavior<Button>
    {

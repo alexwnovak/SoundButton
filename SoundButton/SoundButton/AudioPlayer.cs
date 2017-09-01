@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
 
-namespace Soundboard
+namespace SoundButton
 {
    public class AudioPlayer : IAudioPlayer
    {

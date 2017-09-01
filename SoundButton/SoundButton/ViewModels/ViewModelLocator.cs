@@ -1,7 +1,7 @@
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 
-namespace Soundboard.ViewModels
+namespace SoundButton.ViewModels
 {
    public class ViewModelLocator
    {

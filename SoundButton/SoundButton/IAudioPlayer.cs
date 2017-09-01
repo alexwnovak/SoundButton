@@ -1,4 +1,4 @@
-﻿namespace Soundboard
+﻿namespace SoundButton
 {
    public interface IAudioPlayer
    {

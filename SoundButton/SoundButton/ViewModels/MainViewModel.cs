@@ -3,7 +3,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 
-namespace Soundboard.ViewModels
+namespace SoundButton.ViewModels
 {
    public class MainViewModel : ViewModelBase
    {
