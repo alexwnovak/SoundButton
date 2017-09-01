@@ -4,6 +4,10 @@ using System.Windows.Input;
 
 namespace SoundButton.Controls
 {
+   [TemplatePart( Name = "OuterBorder", Type = typeof( Border ))]
+   [TemplateVisualState( Name = "Normal", GroupName = "CommonStates" )]
+   [TemplateVisualState( Name = "Pressed", GroupName = "CommonStates" )]
+   [TemplateVisualState( Name = "MouseOver", GroupName = "CommonStates" )]
    public class MenuButton : ContentControl
    {
       private Border _outerBorder;
@@ -28,7 +32,6 @@ namespace SoundButton.Controls
                _outerBorder.MouseLeave += OuterBorderMouseLeave;
                _outerBorder.MouseLeftButtonDown += OuterBorderMouseLeftButtonDown;
                _outerBorder.MouseLeftButtonUp += OuterBorderMouseLeftButtonUp;
-
             }
          }
       }
