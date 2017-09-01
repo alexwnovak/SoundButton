@@ -27,6 +27,8 @@ namespace SoundButton.Controls
                _outerBorder.MouseLeave -= OuterBorderMouseLeave;
                _outerBorder.MouseLeftButtonDown -= OuterBorderMouseLeftButtonDown;
                _outerBorder.MouseLeftButtonUp -= OuterBorderMouseLeftButtonUp;
+               _outerBorder.MouseRightButtonDown -= OuterBorderMouseRightButtonDown;
+               _outerBorder.MouseRightButtonUp -= OuterBorderMouseRightButtonUp;
             }
 
             _outerBorder = value;
@@ -37,6 +39,9 @@ namespace SoundButton.Controls
                _outerBorder.MouseLeave += OuterBorderMouseLeave;
                _outerBorder.MouseLeftButtonDown += OuterBorderMouseLeftButtonDown;
                _outerBorder.MouseLeftButtonUp += OuterBorderMouseLeftButtonUp;
+               _outerBorder.MouseRightButtonDown += OuterBorderMouseRightButtonDown;
+               _outerBorder.MouseRightButtonUp += OuterBorderMouseRightButtonUp;
+
             }
          }
       }
@@ -136,6 +141,16 @@ namespace SoundButton.Controls
          }
 
          _hasLongPressed = false;
+      }
+
+      private void OuterBorderMouseRightButtonDown( object sender, MouseEventArgs e )
+      {
+         VisualStateManager.GoToState( this, "Pressed", true );
+      }
+
+      private void OuterBorderMouseRightButtonUp( object sender, MouseEventArgs e )
+      {
+         VisualStateManager.GoToState( this, "MouseOver", true );
       }
 
       protected void RaiseClickEvent() => RaiseEvent( new RoutedEventArgs( ClickEvent ) );
