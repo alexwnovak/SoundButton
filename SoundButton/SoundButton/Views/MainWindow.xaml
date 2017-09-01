@@ -37,7 +37,8 @@
       <controls:MenuButton Width="128"
          Height="128"
          CornerRadius="100"
-         Background="#4000">
+         Background="#4000"
+         LeftClick="MenuButton_OnLeftClick">
 
          <controls:MenuButton.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="2" />
