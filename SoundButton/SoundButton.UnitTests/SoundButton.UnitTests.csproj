@@ -7,8 +7,8 @@
     <ProjectGuid>{B99DCE95-E39A-4FBB-B01D-8EFFADCB8835}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Soundboard.UnitTests</RootNamespace>
-    <AssemblyName>Soundboard.UnitTests</AssemblyName>
+    <RootNamespace>SoundButton.UnitTests</RootNamespace>
+    <AssemblyName>SoundButton.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

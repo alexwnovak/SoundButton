@@ -1,8 +1,8 @@
 ﻿using Moq;
+using SoundButton.ViewModels;
 using Xunit;
-using Soundboard.ViewModels;
 
-namespace Soundboard.UnitTests.ViewModels
+namespace SoundButton.UnitTests.ViewModels
 {
    public class MainViewModelTests
    {
