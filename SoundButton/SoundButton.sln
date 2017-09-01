@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundButton", "SoundButton\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundButton.UnitTests", "SoundButton.UnitTests\SoundButton.UnitTests.csproj", "{B99DCE95-E39A-4FBB-B01D-8EFFADCB8835}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundButton.UITests", "SoundButton.UITests\SoundButton.UITests.csproj", "{4335BD53-185D-40CA-AEAA-F558D9042AE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B99DCE95-E39A-4FBB-B01D-8EFFADCB8835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B99DCE95-E39A-4FBB-B01D-8EFFADCB8835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B99DCE95-E39A-4FBB-B01D-8EFFADCB8835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4335BD53-185D-40CA-AEAA-F558D9042AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4335BD53-185D-40CA-AEAA-F558D9042AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4335BD53-185D-40CA-AEAA-F558D9042AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4335BD53-185D-40CA-AEAA-F558D9042AE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
