@@ -132,6 +132,9 @@ namespace SoundButton.Controls
 
       private void OuterBorderMouseLeave( object sender, MouseEventArgs e )
       {
+         _longPressDispatcherTimer.Stop();
+         _hasLongPressed = false;
+
          VisualStateManager.GoToState( this, "Normal", true );
       }
 
