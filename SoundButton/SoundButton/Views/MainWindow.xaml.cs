@@ -48,6 +48,11 @@ namespace SoundButton.Views
          FadeMenuIn();
       }
 
+      private void MenuButton_OnLongPress( object sender, RoutedEventArgs e )
+      {
+         FadeMenuIn();
+      }
+
       private void FadeMenuIn()
       {
          var storyboard = new Storyboard();

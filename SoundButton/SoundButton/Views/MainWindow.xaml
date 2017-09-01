@@ -34,7 +34,8 @@
          CornerRadius="100"
          Background="#4000"
          LeftClick="MenuButton_OnLeftClick"
-         RightClick="MenuButton_OnRightClick">
+         RightClick="MenuButton_OnRightClick"
+         LongPress="MenuButton_OnLongPress">
 
          <controls:MenuButton.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="2" />
