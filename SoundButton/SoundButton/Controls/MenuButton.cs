@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace SoundButton.Controls
 {
@@ -10,6 +12,8 @@ namespace SoundButton.Controls
    [TemplateVisualState( Name = "MouseOver", GroupName = "CommonStates" )]
    public class MenuButton : ContentControl
    {
+      private readonly DispatcherTimer _longPressDispatcherTimer = new DispatcherTimer( DispatcherPriority.Input );
+
       private Border _outerBorder;
       public Border OuterBorder
       {
@@ -47,6 +51,17 @@ namespace SoundButton.Controls
          set => SetValue( CornerRadiusProperty, value );
       }
 
+      public static DependencyProperty LongPressIntervalProperty = DependencyProperty.Register( nameof( LongPressInterval ),
+         typeof( TimeSpan ),
+         typeof( MenuButton ),
+         new PropertyMetadata( TimeSpan.FromMilliseconds( 1000 ) ) );
+
+      public TimeSpan LongPressInterval
+      {
+         get => (TimeSpan) GetValue( LongPressIntervalProperty );
+         set => SetValue( LongPressIntervalProperty, value );
+      }
+
       public static readonly RoutedEvent ClickEvent = EventManager.RegisterRoutedEvent( nameof( Click ),
          RoutingStrategy.Bubble,
          typeof( RoutedEventHandler ),
@@ -58,9 +73,32 @@ namespace SoundButton.Controls
          remove => RemoveHandler( ClickEvent, value );
       }
 
+      public static readonly RoutedEvent LongPressEvent = EventManager.RegisterRoutedEvent( nameof( LongPress ),
+         RoutingStrategy.Bubble,
+         typeof( RoutedEventHandler ),
+         typeof( MenuButton ) );
+
+      public event RoutedEventHandler LongPress
+      {
+         add => AddHandler( LongPressEvent, value );
+         remove => RemoveHandler( LongPressEvent, value );
+      }
+
       static MenuButton()
       {
          DefaultStyleKeyProperty.OverrideMetadata( typeof( MenuButton ), new FrameworkPropertyMetadata( typeof( MenuButton ) ) );
+      }
+
+      public MenuButton()
+      {
+         _longPressDispatcherTimer.Interval = LongPressInterval;
+         _longPressDispatcherTimer.Tick += ( _, __ ) => LongPressDispatcherTimerTick();
+      }
+
+      private void LongPressDispatcherTimerTick()
+      {
+         _longPressDispatcherTimer.Stop();
+         RaiseLongPressEvent();
       }
 
       public override void OnApplyTemplate()
@@ -80,15 +118,18 @@ namespace SoundButton.Controls
 
       private void OuterBorderMouseLeftButtonDown( object sender, MouseButtonEventArgs e )
       {
+         _longPressDispatcherTimer.Start();
          VisualStateManager.GoToState( this, "Pressed", true );
       }
 
       private void OuterBorderMouseLeftButtonUp( object sender, MouseButtonEventArgs e )
       {
+         _longPressDispatcherTimer.Stop();
          VisualStateManager.GoToState( this, "MouseOver", true );
          RaiseClickEvent();
       }
 
       protected void RaiseClickEvent() => RaiseEvent( new RoutedEventArgs( ClickEvent ) );
+      protected void RaiseLongPressEvent() => RaiseEvent( new RoutedEventArgs( LongPressEvent ) );
    }
 }
