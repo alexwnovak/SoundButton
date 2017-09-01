@@ -76,6 +76,7 @@
     <Compile Include="AudioPlayer.cs" />
     <Compile Include="Behaviors\InteractionInterpreter.cs" />
     <Compile Include="Behaviors\MouseInteractionBehavior.cs" />
+    <Compile Include="Controls\MenuButton.cs" />
     <Compile Include="IAudioPlayer.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
