@@ -16,6 +16,8 @@ namespace SoundButton.Controls
             {
                _outerBorder.MouseEnter -= OuterBorderMouseEnter;
                _outerBorder.MouseLeave -= OuterBorderMouseLeave;
+               _outerBorder.MouseLeftButtonDown -= OuterBorderMouseLeftButtonDown;
+               _outerBorder.MouseLeftButtonUp -= OuterBorderMouseLeftButtonUp;
             }
 
             _outerBorder = value;
@@ -24,6 +26,9 @@ namespace SoundButton.Controls
             {
                _outerBorder.MouseEnter += OuterBorderMouseEnter;
                _outerBorder.MouseLeave += OuterBorderMouseLeave;
+               _outerBorder.MouseLeftButtonDown += OuterBorderMouseLeftButtonDown;
+               _outerBorder.MouseLeftButtonUp += OuterBorderMouseLeftButtonUp;
+
             }
          }
       }
@@ -57,6 +62,16 @@ namespace SoundButton.Controls
       private void OuterBorderMouseLeave( object sender, MouseEventArgs e )
       {
          VisualStateManager.GoToState( this, "Normal", true );
+      }
+
+      private void OuterBorderMouseLeftButtonDown( object sender, MouseButtonEventArgs e )
+      {
+         VisualStateManager.GoToState( this, "Pressed", true );
+      }
+
+      private void OuterBorderMouseLeftButtonUp( object sender, MouseButtonEventArgs e )
+      {
+         VisualStateManager.GoToState( this, "MouseOver", true );
       }
    }
 }
