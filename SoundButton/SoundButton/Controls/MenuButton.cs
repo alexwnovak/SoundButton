@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using SoundButton.Automation;
 
 namespace SoundButton.Controls
 {
@@ -110,6 +112,11 @@ namespace SoundButton.Controls
       {
          _longPressDispatcherTimer.Interval = LongPressInterval;
          _longPressDispatcherTimer.Tick += ( _, __ ) => LongPressDispatcherTimerTick();
+      }
+
+      protected override AutomationPeer OnCreateAutomationPeer()
+      {
+         return new MenuButtonAutomationPeer( this );
       }
 
       private void LongPressDispatcherTimerTick()
