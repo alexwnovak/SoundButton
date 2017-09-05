@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Helpers\Application.cs" />
     <Compile Include="Helpers\AutomationItem.cs" />
+    <Compile Include="Helpers\Property.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ApplicationTests.cs" />
   </ItemGroup>
