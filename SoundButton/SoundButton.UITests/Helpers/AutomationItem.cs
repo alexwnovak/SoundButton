@@ -13,5 +13,11 @@ namespace SoundButton.UITests.Helpers
       internal AutomationItem()
       {
       }
+
+      public void Click()
+      {
+         var invokePattern = (InvokePattern) AutomationElement.GetCurrentPattern( InvokePattern.Pattern );
+         invokePattern.Invoke();
+      }
    }
 }
