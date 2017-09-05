@@ -6,7 +6,7 @@ using System.Windows.Threading;
 
 namespace SoundButton.Controls
 {
-   [TemplatePart( Name = "OuterBorder", Type = typeof( Border ))]
+   [TemplatePart( Name = "OuterBorder", Type = typeof( Border ) )]
    [TemplateVisualState( Name = "Normal", GroupName = "CommonStates" )]
    [TemplateVisualState( Name = "Pressed", GroupName = "CommonStates" )]
    [TemplateVisualState( Name = "MouseOver", GroupName = "CommonStates" )]
@@ -72,7 +72,7 @@ namespace SoundButton.Controls
          RoutingStrategy.Bubble,
          typeof( RoutedEventHandler ),
          typeof( MenuButton ) );
-      
+
       public event RoutedEventHandler LeftClick
       {
          add => AddHandler( LeftClickEvent, value );
