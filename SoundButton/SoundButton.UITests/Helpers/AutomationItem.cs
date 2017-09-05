@@ -7,11 +7,11 @@ namespace SoundButton.UITests.Helpers
       internal AutomationElement AutomationElement
       {
          get;
-         set;
       }
 
-      internal AutomationItem()
+      internal AutomationItem( AutomationElement automationElement )
       {
+         AutomationElement = automationElement;
       }
 
       public void Click()

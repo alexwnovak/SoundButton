@@ -1,11 +1,22 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows.Automation;
 
 namespace SoundButton.UITests.Helpers
 {
    public class Application : IDisposable
    {
       private readonly Process _applicationProcess;
+
+      public AutomationItem MainWindow
+      {
+         get
+         {
+            var condition = new PropertyCondition( AutomationElement.ProcessIdProperty, _applicationProcess.Id );
+            var mainWindow = AutomationElement.RootElement.FindFirst( TreeScope.Children, condition );
+            return new AutomationItem( mainWindow );
+         }
+      }
 
       private Application( Process applicationProcess )
       {
