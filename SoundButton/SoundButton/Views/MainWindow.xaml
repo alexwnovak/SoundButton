@@ -37,7 +37,8 @@
          Margin="10,0,0,0"
          LeftClick="MenuButton_OnLeftClick"
          RightClick="MenuButton_OnRightClick"
-         LongPress="MenuButton_OnLongPress">
+         LongPress="MenuButton_OnLongPress"
+         AutomationProperties.AutomationId="ai-PlayButton">
 
          <controls:MenuButton.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="2" />
@@ -59,8 +60,8 @@
 
          <Button Content="Exit"
             Style="{StaticResource BorderButton}"
-            Command="{Binding ExitCommand, Mode=OneTime}" />
+            Command="{Binding ExitCommand, Mode=OneTime}" 
+            AutomationProperties.AutomationId="ai-ExitButton" />
       </StackPanel>
    </Grid>
 </Window>
- 
