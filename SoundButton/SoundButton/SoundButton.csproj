@@ -64,6 +64,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -75,6 +76,7 @@
     </ApplicationDefinition>
     <Compile Include="AudioPlayer.cs" />
     <Compile Include="Controls\MenuButton.cs" />
+    <Compile Include="Automation\MenuButtonAutomationPeer.cs" />
     <Compile Include="IAudioPlayer.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
