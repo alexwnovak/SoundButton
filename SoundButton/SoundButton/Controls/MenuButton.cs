@@ -168,8 +168,8 @@ namespace SoundButton.Controls
          VisualStateManager.GoToState( this, "MouseOver", true );
       }
 
-      protected void RaiseLeftClickEvent() => RaiseEvent( new RoutedEventArgs( LeftClickEvent ) );
-      protected void RaiseRightClickEvent() => RaiseEvent( new RoutedEventArgs( RightClickEvent ) );
-      protected void RaiseLongPressEvent() => RaiseEvent( new RoutedEventArgs( LongPressEvent ) );
+      internal void RaiseLeftClickEvent() => RaiseEvent( new RoutedEventArgs( LeftClickEvent ) );
+      internal void RaiseRightClickEvent() => RaiseEvent( new RoutedEventArgs( RightClickEvent ) );
+      internal void RaiseLongPressEvent() => RaiseEvent( new RoutedEventArgs( LongPressEvent ) );
    }
 }
