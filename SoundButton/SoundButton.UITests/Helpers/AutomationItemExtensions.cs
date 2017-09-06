@@ -10,7 +10,7 @@ namespace SoundButton.UITests.Helpers
       {
          var propertyCondition = by.GetCondition( value );
 
-         for ( int attempt = 0; attempt < 10; attempt++ )
+         for ( int attempt = 0; attempt < 50; attempt++ )
          {
             System.Diagnostics.Debug.WriteLine( "Looking for element" );
 
