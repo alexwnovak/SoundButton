@@ -12,8 +12,7 @@ namespace SoundButton.UITests.Helpers
       {
          get
          {
-            var condition = new PropertyCondition( AutomationElement.ProcessIdProperty, _applicationProcess.Id );
-            var mainWindow = AutomationElement.RootElement.FindFirst( TreeScope.Children, condition );
+            var mainWindow = AutomationElement.RootElement.Find( Property.ProcessId, _applicationProcess.Id );
             return new AutomationItem( mainWindow );
          }
       }
