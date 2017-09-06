@@ -9,6 +9,7 @@ namespace SoundButton.UITests.Helpers
       public static AutomationElement Find( this AutomationElement automationElement, Property by, object value )
       {
          var propertyCondition = by.GetCondition( value );
+         DateTime startTime = DateTime.Now;
 
          for ( int attempt = 0; attempt < 50; attempt++ )
          {
@@ -26,7 +27,8 @@ namespace SoundButton.UITests.Helpers
             Thread.Sleep( 100 );
          }
 
-         throw new Exception();
+         var elapsedTime = DateTime.Now - startTime;
+         throw new Exception( $"Unable to find by value {value} after {elapsedTime.TotalSeconds} seconds" );
       }
 
       public static AutomationItem Find( this AutomationItem automationItem, Property by, object value )
