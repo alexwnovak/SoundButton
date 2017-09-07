@@ -25,6 +25,7 @@ namespace SoundButton.UITests.Helpers
       public static Application Launch( string applicationPath )
       {
          var applicationProcess = Process.Start( applicationPath );
+         applicationProcess.WaitForInputIdle();
 
          return new Application( applicationProcess );
       }

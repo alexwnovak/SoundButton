@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Xunit;
 using SoundButton.UITests.Helpers;
 
@@ -11,6 +12,7 @@ namespace SoundButton.UITests
       public ApplicationTests()
       {
          _application = Application.Launch( @"..\..\..\SoundButton\bin\Debug\SoundButton.exe" );
+         Thread.Sleep( 1000 );
       }
 
       public void Dispose()
