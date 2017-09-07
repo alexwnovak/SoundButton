@@ -11,7 +11,7 @@ namespace SoundButton.UITests
 
       public ApplicationTests()
       {
-         _application = Application.Launch( @"..\..\..\SoundButton\bin\Debug\SoundButton.exe" );
+         _application = Application.Launch( @"..\..\..\BuildOutput\SoundButton.exe" );
          Thread.Sleep( 1000 );
       }
 
