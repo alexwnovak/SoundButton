@@ -48,11 +48,22 @@ Task( "RunUnitTests" )
     XUnit2( "./SoundButton/SoundButton.UnitTests/bin/" + Directory( configuration ) + "/*Tests*.dll" );
 } );
 
+Task( "RunUITests" )
+   .IsDependentOn( "Build" )
+   .Does( () =>
+{
+    XUnit2( "./SoundButton/SoundButton.UITests/bin/" + Directory( configuration ) + "/*Tests*.dll" );
+} );
+
+Task( "RunAllTests" )
+   .IsDependentOn( "RunUnitTests" )
+   .IsDependentOn( "RunUITests" );
+
 //===========================================================================
 // Default Task
 //===========================================================================
 
 Task( "Default" )
-   .IsDependentOn( "RunUnitTests" );
+   .IsDependentOn( "RunAllTests" );
 
 RunTarget( target );
