@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using SoundButton.Automation;
 
 namespace SoundButton.Controls
 {
-   [TemplatePart( Name = "OuterBorder", Type = typeof( Border ))]
+   [TemplatePart( Name = "OuterBorder", Type = typeof( Border ) )]
    [TemplateVisualState( Name = "Normal", GroupName = "CommonStates" )]
    [TemplateVisualState( Name = "Pressed", GroupName = "CommonStates" )]
    [TemplateVisualState( Name = "MouseOver", GroupName = "CommonStates" )]
@@ -72,7 +74,7 @@ namespace SoundButton.Controls
          RoutingStrategy.Bubble,
          typeof( RoutedEventHandler ),
          typeof( MenuButton ) );
-      
+
       public event RoutedEventHandler LeftClick
       {
          add => AddHandler( LeftClickEvent, value );
@@ -110,6 +112,11 @@ namespace SoundButton.Controls
       {
          _longPressDispatcherTimer.Interval = LongPressInterval;
          _longPressDispatcherTimer.Tick += ( _, __ ) => LongPressDispatcherTimerTick();
+      }
+
+      protected override AutomationPeer OnCreateAutomationPeer()
+      {
+         return new MenuButtonAutomationPeer( this );
       }
 
       private void LongPressDispatcherTimerTick()
@@ -168,8 +175,8 @@ namespace SoundButton.Controls
          VisualStateManager.GoToState( this, "MouseOver", true );
       }
 
-      protected void RaiseLeftClickEvent() => RaiseEvent( new RoutedEventArgs( LeftClickEvent ) );
-      protected void RaiseRightClickEvent() => RaiseEvent( new RoutedEventArgs( RightClickEvent ) );
-      protected void RaiseLongPressEvent() => RaiseEvent( new RoutedEventArgs( LongPressEvent ) );
+      internal void RaiseLeftClickEvent() => RaiseEvent( new RoutedEventArgs( LeftClickEvent ) );
+      internal void RaiseRightClickEvent() => RaiseEvent( new RoutedEventArgs( RightClickEvent ) );
+      internal void RaiseLongPressEvent() => RaiseEvent( new RoutedEventArgs( LongPressEvent ) );
    }
 }

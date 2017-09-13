@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Soundboard.UnitTests")]
+[assembly: AssemblyTitle("SoundButton.UITests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Soundboard.UnitTests")]
-[assembly: AssemblyCopyright( "Copyright © 2017 Alex Novak. All rights reserved." )]
+[assembly: AssemblyProduct("SoundButton.UITests")]
+[assembly: AssemblyCopyright( "Copyright © 2017 Copyright © 2017 Alex Novak. All rights reserved." )]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b99dce95-e39a-4fbb-b01d-8effadcb8835")]
+[assembly: Guid("4335bd53-185d-40ca-aeaa-f558d9042ae7")]
 
 // Version information for an assembly consists of the following four values:
 //
