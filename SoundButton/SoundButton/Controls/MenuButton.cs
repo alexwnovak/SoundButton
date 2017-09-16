@@ -141,7 +141,7 @@ namespace SoundButton.Controls
 
       private void OuterBorderMouseEnter( object sender, MouseEventArgs e )
       {
-         VisualStateManager.GoToState( this, "MouseOver", true );
+         _visualStateManager.GoToState( this, "MouseOver", true );
       }
 
       private void OuterBorderMouseLeave( object sender, MouseEventArgs e )
@@ -149,19 +149,19 @@ namespace SoundButton.Controls
          _longPressDispatcherTimer.Stop();
          _hasLongPressed = false;
 
-         VisualStateManager.GoToState( this, "Normal", true );
+         _visualStateManager.GoToState( this, "Normal", true );
       }
 
       private void OuterBorderMouseLeftButtonDown( object sender, MouseButtonEventArgs e )
       {
          _longPressDispatcherTimer.Start();
-         VisualStateManager.GoToState( this, "Pressed", true );
+         _visualStateManager.GoToState( this, "Pressed", true );
       }
 
       private void OuterBorderMouseLeftButtonUp( object sender, MouseButtonEventArgs e )
       {
          _longPressDispatcherTimer.Stop();
-         VisualStateManager.GoToState( this, "MouseOver", true );
+         _visualStateManager.GoToState( this, "MouseOver", true );
 
          if ( !_hasLongPressed )
          {
@@ -173,13 +173,13 @@ namespace SoundButton.Controls
 
       private void OuterBorderMouseRightButtonDown( object sender, MouseEventArgs e )
       {
-         VisualStateManager.GoToState( this, "Pressed", true );
+         _visualStateManager.GoToState( this, "Pressed", true );
       }
 
       private void OuterBorderMouseRightButtonUp( object sender, MouseEventArgs e )
       {
          RaiseRightClickEvent();
-         VisualStateManager.GoToState( this, "MouseOver", true );
+         _visualStateManager.GoToState( this, "MouseOver", true );
       }
 
       internal void RaiseLeftClickEvent() => RaiseEvent( new RoutedEventArgs( LeftClickEvent ) );
