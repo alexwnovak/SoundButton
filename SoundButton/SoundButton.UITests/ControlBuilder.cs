@@ -4,6 +4,14 @@ using System.Windows;
 
 namespace SoundButton.UITests
 {
+   public static class ControlBuilder
+   {
+      public static ControlBuilder<T> For<T>() where T : FrameworkElement, new()
+      {
+         return new ControlBuilder<T>();
+      }
+   }
+
    public class ControlBuilder<T> where T: FrameworkElement, new()
    {
       private readonly List<Action<T>> _objectModifiers = new List<Action<T>>();
