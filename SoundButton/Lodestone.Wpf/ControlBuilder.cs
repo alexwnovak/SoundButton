@@ -10,14 +10,26 @@ namespace Lodestone.Wpf
       {
          return new ControlBuilder<T>();
       }
+
+      public static ControlBuilder<T> For<T>( Func<T> creator ) where T: FrameworkElement, new()
+      {
+         return new ControlBuilder<T>( creator );
+      }
    }
 
    public class ControlBuilder<T> where T: FrameworkElement, new()
    {
       private readonly List<Action<T>> _objectModifiers = new List<Action<T>>();
+      private readonly Func<T> _creator;
 
       internal ControlBuilder()
+         : this( () => new T() )
       {
+      }
+
+      internal ControlBuilder( Func<T> creator )
+      {
+         _creator = creator;
       }
 
       public ControlBuilder<T> With( Action<T> controlModifier )
@@ -28,7 +40,7 @@ namespace Lodestone.Wpf
 
       internal T Build()
       {
-         var control = new T();
+         var control = _creator();
 
          foreach ( var objectModifier in _objectModifiers )
          {
