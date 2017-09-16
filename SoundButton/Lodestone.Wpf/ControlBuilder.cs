@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace SoundButton.UITests
+namespace Lodestone.Wpf
 {
    public static class ControlBuilder
    {

@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlBuilder.cs" />
     <Compile Include="Helpers\Application.cs" />
     <Compile Include="Helpers\AutomationItem.cs" />
     <Compile Include="Helpers\AutomationItemExtensions.cs" />
