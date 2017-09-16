@@ -75,8 +75,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AudioPlayer.cs" />
+    <Compile Include="Controls\IVisualStateManager.cs" />
     <Compile Include="Controls\MenuButton.cs" />
     <Compile Include="Automation\MenuButtonAutomationPeer.cs" />
+    <Compile Include="Controls\VisualStateManagerAdapter.cs" />
     <Compile Include="IAudioPlayer.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
