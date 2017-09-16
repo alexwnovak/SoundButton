@@ -14,6 +14,7 @@ namespace SoundButton.Controls
    [TemplateVisualState( Name = "MouseOver", GroupName = "CommonStates" )]
    public class MenuButton : ContentControl
    {
+      private readonly IVisualStateManager _visualStateManager;
       private readonly DispatcherTimer _longPressDispatcherTimer = new DispatcherTimer( DispatcherPriority.Input );
       private bool _hasLongPressed;
 
@@ -109,7 +110,13 @@ namespace SoundButton.Controls
       }
 
       public MenuButton()
+         : this( new VisualStateManagerAdapter() )
       {
+      }
+
+      public MenuButton( IVisualStateManager visualStateManager )
+      {
+         _visualStateManager = visualStateManager;
          _longPressDispatcherTimer.Interval = LongPressInterval;
          _longPressDispatcherTimer.Tick += ( _, __ ) => LongPressDispatcherTimerTick();
       }
