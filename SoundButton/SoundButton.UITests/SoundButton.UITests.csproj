@@ -78,6 +78,10 @@
       <Project>{412d8a64-e4ba-4da8-97ca-6113c29acd37}</Project>
       <Name>Lodestone.Wpf</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SoundButton\SoundButton.csproj">
+      <Project>{01E2939B-00AE-42D4-B404-817A947BB310}</Project>
+      <Name>SoundButton</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
