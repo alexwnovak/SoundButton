@@ -1,15 +1,24 @@
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
 namespace Lodestone.Wpf
 {
-   public class ControlHost
+   public class ControlHost<T> where T : FrameworkElement, new()
    {
       private readonly Thread _thread;
+      private readonly Window _window;
 
-      private ControlHost( Thread thread )
+      public T Control
       {
+         get;
+      }
+
+      private ControlHost( T control, Window window, Thread thread )
+      {
+         Control = control;
+         _window = window;
          _thread = thread;
       }
 
@@ -17,20 +26,33 @@ namespace Lodestone.Wpf
 
       public void Close()
       {
-         _thread.Abort();
+         _window.Dispatcher.Invoke( delegate
+         {
+            _window.Close();
+         } );
       }
 
-      public static ControlHost Launch<T>( ControlBuilder<T> controlBuilder ) where T: FrameworkElement, new()
+      public static ControlHost<T> Launch( ControlBuilder<T> controlBuilder )
       {
+         T control = null;
+         Window window = null;
+
+         var tcs = new TaskCompletionSource<bool>();
+
          var windowThread = new Thread( () =>
          {
-            var window = new MainWindow
+            control = controlBuilder.Build();
+
+            window = new MainWindow
             {
-               Content = controlBuilder.Build()
+               Content = control
             };
 
             window.Closed += ( s, e ) => window.Dispatcher.InvokeShutdown();
             window.Show();
+
+            tcs.SetResult( true );
+
             Dispatcher.Run();
          } )
          {
@@ -40,7 +62,9 @@ namespace Lodestone.Wpf
          windowThread.SetApartmentState( ApartmentState.STA );
          windowThread.Start();
 
-         return new ControlHost( windowThread );
+         tcs.Task.Wait();
+
+         return new ControlHost<T>( control, window, windowThread );
       }
    }
 }
