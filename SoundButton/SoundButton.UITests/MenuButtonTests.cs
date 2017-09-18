@@ -13,6 +13,7 @@ namespace SoundButton.UITests
    public class MenuButtonTests
    {
       [Fact]
+      [Trait( "Category", "UI" )]
       public void HoversMouseOverControl_EntersMouseOverVisualState()
       {
          var visualStateManagerMock = new Mock<IVisualStateManager>();
