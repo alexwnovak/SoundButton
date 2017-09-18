@@ -2,7 +2,7 @@
 
 var target = Argument( "target", "Default" );
 var configuration = Argument( "configuration", "Release" );
-var tests = Argument( "tests", "All" );
+var tests = Argument( "tests", "Unit" );
 var buildDir = Directory( "./SoundButton/SoundButton/bin" ) + Directory( configuration );
 
 bool IsTestTargetEnabled( string testType )
@@ -61,7 +61,7 @@ Task( "RunUnitTests" )
 } );
 
 Task( "RunUITests" )
-   .IsDependentOn( "Build" )
+   .IsDependentOn( "RunUnitTests" )
    .Does( () =>
 {
    if ( IsTestTargetEnabled( "UI" ) )
@@ -75,7 +75,6 @@ Task( "RunUITests" )
 } );
 
 Task( "RunAllTests" )
-   .IsDependentOn( "RunUnitTests" )
    .IsDependentOn( "RunUITests" );
 
 //===========================================================================
