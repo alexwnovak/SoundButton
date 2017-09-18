@@ -2,6 +2,7 @@
 
 var target = Argument( "target", "Default" );
 var configuration = Argument( "configuration", "Release" );
+var tests = Argument( "tests", "All" );
 
 var buildDir = Directory( "./SoundButton/SoundButton/bin" ) + Directory( configuration );
 
@@ -52,7 +53,14 @@ Task( "RunUITests" )
    .IsDependentOn( "Build" )
    .Does( () =>
 {
-    XUnit2( "./SoundButton/SoundButton.UITests/bin/" + Directory( configuration ) + "/*Tests*.dll" );
+   if ( tests == "All" )
+   {
+      XUnit2( "./SoundButton/SoundButton.UITests/bin/" + Directory( configuration ) + "/*Tests*.dll" );
+   }
+   else
+   {
+      Information( "UI Tests Skipped for this configuration" );
+   }    
 } );
 
 Task( "RunAllTests" )
