@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Automation;
 using Xunit;
@@ -10,7 +11,20 @@ using SoundButton.UITests.Helpers;
 
 namespace SoundButton.UITests
 {
-   public class MenuButtonTests
+   public class TestFixture : IDisposable
+   {
+      protected TestFixture()
+      {
+         System.Diagnostics.Debug.WriteLine( "===== Fixture Start" );
+      }
+
+      public void Dispose()
+      {
+         System.Diagnostics.Debug.WriteLine( "===== Fixture End" );
+      }
+   }
+
+   public class MenuButtonTests : TestFixture
    {
       [Fact]
       [Trait( "Category", "UI" )]
