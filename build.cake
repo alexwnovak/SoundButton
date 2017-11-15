@@ -2,8 +2,13 @@
 
 var target = Argument( "target", "Default" );
 var configuration = Argument( "configuration", "Release" );
-
+var tests = Argument( "tests", "Unit" );
 var buildDir = Directory( "./SoundButton/SoundButton/bin" ) + Directory( configuration );
+
+bool IsTestTargetEnabled( string testType )
+{
+   return tests == "All" || tests.Split( ',' ).Contains( testType );
+}
 
 //===========================================================================
 // Clean Task
@@ -45,18 +50,31 @@ Task( "RunUnitTests" )
    .IsDependentOn( "Build" )
    .Does( () =>
 {
-    XUnit2( "./SoundButton/SoundButton.UnitTests/bin/" + Directory( configuration ) + "/*Tests*.dll" );
+   if ( IsTestTargetEnabled( "Unit" ) )
+   {
+      XUnit2( "./SoundButton/SoundButton.UnitTests/bin/" + Directory( configuration ) + "/*Tests*.dll" );
+   }
+   else
+   {
+      Information( "Unit tests skipped for this configuration" );
+   }
 } );
 
 Task( "RunUITests" )
-   .IsDependentOn( "Build" )
+   .IsDependentOn( "RunUnitTests" )
    .Does( () =>
 {
-    XUnit2( "./SoundButton/SoundButton.UITests/bin/" + Directory( configuration ) + "/*Tests*.dll" );
+   if ( IsTestTargetEnabled( "UI" ) )
+   {
+      XUnit2( "./SoundButton/SoundButton.UITests/bin/" + Directory( configuration ) + "/*Tests*.dll" );
+   }
+   else
+   {
+      Information( "UI tests skipped for this configuration" );
+   }    
 } );
 
 Task( "RunAllTests" )
-   .IsDependentOn( "RunUnitTests" )
    .IsDependentOn( "RunUITests" );
 
 //===========================================================================

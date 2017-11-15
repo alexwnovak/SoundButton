@@ -21,6 +21,7 @@ namespace SoundButton.UITests
       }
 
       [Fact]
+      [Trait( "Category", "UI" )]
       public void AppLaunches_ExitButtonIsClicked_AppExits()
       {
          var playButton = _application.MainWindow.Find( Property.AutomationId, "ai-PlayButton" );
